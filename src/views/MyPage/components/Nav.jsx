@@ -1,15 +1,16 @@
 import React from "react";
 import Home from "../pages/Home";
 import Code from "../pages/Code";
-import Photos from "../pages/Photos";
+import Art from "../pages/Art";
 
 const Nav = ({ setPage }) => {
-  const pages = [<Home />, <Code />, <Photos />];
+  const pages = [<Home />, <Code />, <Art />];
 
   return (
-    <ul>
+    <ul className="flex flex-col gap-1">
       <li>
         <button
+          className="page-nav-button"
           onClick={() => {
             setPage(pages[0]);
           }}
@@ -19,6 +20,7 @@ const Nav = ({ setPage }) => {
       </li>
       <li>
         <button
+          className="page-nav-button"
           onClick={() => {
             setPage(pages[1]);
           }}
@@ -28,11 +30,12 @@ const Nav = ({ setPage }) => {
       </li>
       <li>
         <button
+          className="page-nav-button"
           onClick={() => {
             setPage(pages[2]);
           }}
         >
-          Photos
+          Art
         </button>
       </li>
     </ul>
