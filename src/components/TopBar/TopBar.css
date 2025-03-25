@@ -1,0 +1,22 @@
+.TopBar {
+  background-color: rgb(196, 196, 196);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: inset var(--size-0_1) var(--size-0_1) rgb(255, 255, 255),
+    var(--size-0_1) var(--size-0_1) rgb(0, 0, 0);
+}
+
+button {
+  font-size: var(--size-1);
+  padding: var(--size-0_1) var(--size-1);
+  box-shadow: inset var(--size-0_1) var(--size-0_1) rgb(255, 255, 255),
+    var(--size-0_1) var(--size-0_1) rgb(0, 0, 0);
+}
+
+button:active {
+  background-color: rgb(221, 221, 221);
+  box-shadow: inset var(--size-0_1) var(--size-0_1) rgb(0, 0, 0),
+    var(--size-0_1) var(--size-0_1) rgb(255, 255, 255);
+  transform: translate(calc(var(--size-1) * 0.01), calc(var(--size-1) * 0.04));
+}
