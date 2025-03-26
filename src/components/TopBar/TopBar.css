@@ -14,9 +14,24 @@ button {
     var(--size-0_1) var(--size-0_1) rgb(0, 0, 0);
 }
 
+button:hover {
+  background-color: rgb(184, 184, 184);
+}
+
 button:active {
   background-color: rgb(221, 221, 221);
   box-shadow: inset var(--size-0_1) var(--size-0_1) rgb(0, 0, 0),
     var(--size-0_1) var(--size-0_1) rgb(255, 255, 255);
   transform: translate(calc(var(--size-1) * 0.01), calc(var(--size-1) * 0.04));
+}
+
+.social-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--size-0_1);
+}
+.social-icon {
+  width: var(--size-1);
+  height: var(--size-1);
 }

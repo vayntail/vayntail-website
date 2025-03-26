@@ -1,5 +1,5 @@
 :root {
-  --size-1: 2.2vh;
+  --size-1: 1.5vw;
   /* padding */
   --size-0_1: calc(var(--size-1) * 0.1);
 }
