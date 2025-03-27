@@ -1,0 +1,26 @@
+.NavButtons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-0_1);
+}
+
+.nav-button {
+  cursor: pointer;
+
+  .img-container {
+    width: var(--nav-button-width);
+    height: auto;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+img {
+  width: 80%;
+}
+img:hover {
+  border: 2px dashed rgb(221, 221, 221);
+  border-radius: 5%;
+}

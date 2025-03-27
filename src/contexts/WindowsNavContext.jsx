@@ -10,8 +10,22 @@ export const WindowsNavProvider = ({ children }) => {
     art: false,
   });
 
+  // toggle window on and off
+  const toggleWindow = (window) => {
+    setWindows((prevState) => ({
+      ...prevState,
+      [window]: !prevState[window],
+    }));
+    console.log(windows);
+  };
+
+  // close the current window
+  const closeWindow = (window) => {
+    toggleWindow(window);
+  };
+
   return (
-    <WindowsNavContext.Provider value={{}}>
+    <WindowsNavContext.Provider value={{ windows, toggleWindow, closeWindow }}>
       {children}
     </WindowsNavContext.Provider>
   );

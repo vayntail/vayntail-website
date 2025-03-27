@@ -4,15 +4,15 @@ const ScreenOrientationContext = createContext();
 
 export const ScreenOrientationProvider = ({ children }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 480);
-  const [isLandscape, setIsLandscape] = useState(
-    window.innerWidth > window.innerHeight
+  const [isHorizontal, setIsHorizontal] = useState(
+    !isMobile && window.innerWidth > window.innerHeight
   );
 
   // handle re-sizing of window
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 480);
-      setIsLandscape(isMobile && window.innerWidth > window.innerHeight);
+      setIsHorizontal(!isMobile && window.innerWidth > window.innerHeight);
     };
 
     window.addEventListener("resize", handleResize);
@@ -20,7 +20,7 @@ export const ScreenOrientationProvider = ({ children }) => {
   }, []);
 
   return (
-    <ScreenOrientationContext.Provider value={{ isMobile, isLandscape }}>
+    <ScreenOrientationContext.Provider value={{ isMobile, isHorizontal }}>
       {children}
     </ScreenOrientationContext.Provider>
   );

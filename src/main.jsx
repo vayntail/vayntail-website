@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { ScreenOrientationProvider } from "./contexts/ScreenOrientationContext.jsx";
+import { WindowsNavProvider } from "./contexts/WindowsNavContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ScreenOrientationProvider>
-      <App />
+      <WindowsNavProvider>
+        <App />
+      </WindowsNavProvider>
     </ScreenOrientationProvider>
   </StrictMode>
 );
