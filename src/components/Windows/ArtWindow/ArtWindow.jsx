@@ -10,8 +10,8 @@ const ArtWindow = (props) => {
     className="ArtWindow" 
     ref={windowRef}
     style={{
-      top: position.y,
-      left: position.x,
+      top: position.current.y,
+      left: position.current.x,
     }}
     >
       <div className="top-bar" onMouseDown={handleMouseDown}>my-art</div>
