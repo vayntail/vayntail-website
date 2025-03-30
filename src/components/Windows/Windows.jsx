@@ -8,9 +8,9 @@ const Windows = () => {
 
   return (
     <div>
-      {windows.about && <AboutWindow />}
-      {windows.art && <ArtWindow />}
-      {windows.code && <CodeWindow />}
+      {windows.about && <AboutWindow/>}
+      {windows.art && <ArtWindow/>}
+      {windows.code && <CodeWindow/>}
     </div>
   );
 };
