@@ -5,9 +5,9 @@ const WindowContext = createContext();
 export const WindowProvider = ({ children }) => {
   // state that contains all window states
   const [windows, setWindows] = useState({
-    about: { position: { x: 0, y: 0 }, ref: useRef(null)},
-    art: { position: { x: 0, y: 0 }, ref: useRef(null)},
-    code: { position: { x: 0, y: 0 }, ref: useRef(null)}, 
+    about: { position: { x: 100, y: 50 }, ref: useRef(null)},
+    art: { position: { x: 100, y: 100 }, ref: useRef(null)},
+    code: { position: { x: 100, y: 150 }, ref: useRef(null)}, 
   });
 
   const screenRef = useRef(null);

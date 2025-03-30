@@ -14,8 +14,13 @@ const AboutWindow = (props) => {
       left: windowState.position.x,
     }}
     >
-      <div className="top-bar" onMouseDown={(e) => handleMouseDown(e, "about")}>about-me</div>
-      <div className="content"><img className="pfp" src="/assets/pfp.png"/></div>
+      <div className="top-bar" onMouseDown={(e) => handleMouseDown(e, "about")}>about-me.txt</div>
+      <div className="content">
+        <img className="pfp" src="/assets/pfp.png"/>
+        Hello! My name is Yoon / Vayn and I like to create art, code, and play games.
+        <br/>
+        I created this website to showcase some of my creations. welcome and hope you stay a while!😊
+      </div>
     </div>
   );
 };
