@@ -6,15 +6,18 @@ const ArtWindow = (props) => {
   const { windowState, handleMouseDown } = useWindow("art");
 
   return (
-    <div 
-    className="ArtWindow" 
-    ref={windowState.ref}
-    style={{
-      top: windowState.position.y,
-      left: windowState.position.x,
-    }}
+    <div
+      className="ArtWindow"
+      ref={windowState.ref}
+      style={{
+        top: windowState.position.y,
+        left: windowState.position.x,
+        zIndex: windowState.zIndex,
+      }}
     >
-      <div className="top-bar" onMouseDown={(e) => handleMouseDown(e, "art")}>my-art</div>
+      <div className="top-bar" onMouseDown={(e) => handleMouseDown(e, "art")}>
+        my-art
+      </div>
       <div className="content">art!</div>
     </div>
   );

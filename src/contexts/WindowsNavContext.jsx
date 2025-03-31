@@ -1,8 +1,11 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useContext } from "react";
+import { useWindow } from "./WindowContext";
 
 const WindowsNavContext = createContext();
 
 export const WindowsNavProvider = ({ children }) => {
+  const { bringToFront } = useWindow();
+
   // initial values
   const [windows, setWindows] = useState({
     about: false,
@@ -16,6 +19,7 @@ export const WindowsNavProvider = ({ children }) => {
       ...prevState,
       [window]: !prevState[window],
     }));
+    bringToFront(window); // bring window zIndex to
     console.log(windows);
   };
 

@@ -9,11 +9,11 @@ import { WindowProvider } from "./contexts/WindowContext.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ScreenOrientationProvider>
-      <WindowsNavProvider>
-        <WindowProvider>
-          <App/>
-        </WindowProvider>
-      </WindowsNavProvider>
+      <WindowProvider>
+        <WindowsNavProvider>
+          <App />
+        </WindowsNavProvider>
+      </WindowProvider>
     </ScreenOrientationProvider>
   </StrictMode>
 );

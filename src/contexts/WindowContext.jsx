@@ -5,9 +5,9 @@ const WindowContext = createContext();
 export const WindowProvider = ({ children }) => {
   // state that contains all window states
   const [windows, setWindows] = useState({
-    about: { position: { x: 100, y: 50 }, ref: useRef(null)},
-    art: { position: { x: 100, y: 100 }, ref: useRef(null)},
-    code: { position: { x: 100, y: 150 }, ref: useRef(null)}, 
+    about: { position: { x: 100, y: 50 }, ref: useRef(null), zIndex: 1 },
+    art: { position: { x: 100, y: 100 }, ref: useRef(null), zIndex: 1 },
+    code: { position: { x: 100, y: 150 }, ref: useRef(null), zIndex: 1 },
   });
 
   const screenRef = useRef(null);
@@ -24,8 +24,29 @@ export const WindowProvider = ({ children }) => {
       return updatedWindows;
     });
   };
+  // function to bring window to front
+  const bringToFront = (windowName) => {
+    setWindows((prevWindows) => {
+      const maxZIndex = Math.max(
+        ...Object.values(prevWindows).map((w) => w.zIndex)
+      );
 
+      return {
+        ...prevWindows,
+        [windowName]: {
+          ...prevWindows[windowName],
+          zIndex: maxZIndex + 1,
+        },
+      };
+    });
+    // test
+    console.log(windows[windowName].zIndex);
+  };
+
+  // called on event
   const handleMouseDown = (e, windowName) => {
+    // bring window to front
+    bringToFront(windowName);
     console.log("Dragging started!");
 
     const windowElement = windows[windowName].ref.current;
@@ -68,10 +89,20 @@ export const WindowProvider = ({ children }) => {
       Object.keys(windows).forEach((windowId) => {
         const window = windows[windowId];
         if (window) {
-          let newX = map(window.position.x, prevScreenSizeRef.current.x, screenRef.current.offsetWidth);
-          let newY = map(window.position.y, prevScreenSizeRef.current.y, screenRef.current.offsetHeight);
+          let newX = map(
+            window.position.x,
+            prevScreenSizeRef.current.x,
+            screenRef.current.offsetWidth
+          );
+          let newY = map(
+            window.position.y,
+            prevScreenSizeRef.current.y,
+            screenRef.current.offsetHeight
+          );
           updateWindowPosition(windowId, newX, newY);
-          console.log(`Resized window ${windowId} to position: { x: ${newX}, y: ${newY} }`);
+          console.log(
+            `Resized window ${windowId} to position: { x: ${newX}, y: ${newY} }`
+          );
         }
       });
       updateScreenSize();
@@ -86,7 +117,15 @@ export const WindowProvider = ({ children }) => {
   }
 
   return (
-    <WindowContext.Provider value={{windows, updateWindowPosition, screenRef, handleMouseDown}}>
+    <WindowContext.Provider
+      value={{
+        windows,
+        updateWindowPosition,
+        screenRef,
+        handleMouseDown,
+        bringToFront,
+      }}
+    >
       {children}
     </WindowContext.Provider>
   );
@@ -94,13 +133,20 @@ export const WindowProvider = ({ children }) => {
 
 // custom hook
 export const useWindow = (windowId) => {
-    const { windows, updateWindowPosition, handleMouseDown, screenRef } = useContext(WindowContext);
-    const windowState = windows[windowId];
-  
-    return {
-      windowState,
-      screenRef,
-      updateWindowPosition,
-      handleMouseDown,
-    };
+  const {
+    windows,
+    updateWindowPosition,
+    handleMouseDown,
+    screenRef,
+    bringToFront,
+  } = useContext(WindowContext);
+  const windowState = windows[windowId];
+
+  return {
+    windowState,
+    screenRef,
+    updateWindowPosition,
+    handleMouseDown,
+    bringToFront,
   };
+};

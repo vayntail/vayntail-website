@@ -46,9 +46,15 @@
   background: url(/bg.jpg) center / cover no-repeat;
   background-color: blueviolet;
   position: relative;
+
+  /* make text un-selectable */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
-.desktop, .mobile {
+.desktop,
+.mobile {
   width: 100%;
   height: calc(100vw * 9 / 16);
   max-height: 100vh;

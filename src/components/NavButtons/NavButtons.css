@@ -5,8 +5,6 @@
 }
 
 .nav-button {
-  cursor: pointer;
-
   .img-container {
     width: var(--nav-button-width);
     height: auto;
@@ -14,6 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
 }
 
