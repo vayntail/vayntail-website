@@ -17,6 +17,7 @@ const AboutWindow = (props) => {
     >
       <div className="top-bar" onMouseDown={(e) => handleMouseDown(e, "about")}>
         about-me.txt
+        <div></div>
       </div>
       <div className="content">
         <img className="pfp" src="/assets/pfp.png" />
