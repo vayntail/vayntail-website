@@ -6,16 +6,40 @@
   --size-0_1: calc(var(--size-1) * 0.1);
   --nav-button-width: 8%;
 }
-
 .mobile {
-  --percent: 20%;
-  --size-1: 2.5vh;
   --nav-button-width: 20%;
 }
 
+.portrait.mobile {
+  --percent: 20%;
+  --size-1: 4.7vw;
+}
+
+.horizontal.mobile {
+  --nav-button-width: 10%;
+}
+
+.mobile.landscape {
+  --size-1: 2.7vh;
+}
+
+.portrait.horizontal {
+  --size-1: 1.5vw;
+}
+
+.landscape.horizontal {
+  --size-1: 2.8vh;
+}
+
+/*
 .horizontal {
+  --size-1: 2vw;
+}
+
+.vertical {
   --size-1: 2vh;
 }
+  */
 
 .Screen {
   font-size: var(--size-1); /*default font size*/
@@ -24,14 +48,14 @@
   position: relative;
 }
 
-.desktop {
-  width: 100vw;
+.desktop, .mobile {
+  width: 100%;
   height: calc(100vw * 9 / 16);
   max-height: 100vh;
   max-width: calc(100vh * 16 / 9);
 }
 
-.mobile {
+.vertical.mobile {
   width: calc(100vh * 9 / 16);
   height: 100%;
   max-height: calc(100vw * 16 / 9);
